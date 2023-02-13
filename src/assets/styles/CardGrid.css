@@ -1,0 +1,87 @@
+.cardGrid {
+    display: flex;
+    flex-direction: row;
+    padding-left: 70px;
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+}
+
+
+.cardContainer {
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+}
+
+.cardContainer:first-of-type {
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+}
+
+.cardImage {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 5px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.cardImage--img {
+    border-radius: 10px;
+    width: 100%;
+    max-height: 365.94px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.cardImage--status {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 90px;
+    text-align: center;
+
+    border-radius: 5px;
+    background-color: white;
+    padding: 4px;
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    height: 80px;
+}
+
+.cardInfo--grade {
+    display: flex;
+    align-items: center;
+}
+
+.cardInfo--grade--star {
+    width: 20px;
+}
+
+.cardInfo--grade--grade {
+    font-size: 1.2rem;
+    padding-left: 3px;
+}
+
+
+.cardInfo--text {
+    font-size: 1.2rem;
+}
+
+.cardInfo--value {
+    font-size: 1.2rem;
+}
+
+.gray {
+    color: #918E9B;
+}
