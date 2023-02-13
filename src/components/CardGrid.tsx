@@ -1,10 +1,13 @@
 import "./../assets/styles/CardGrid.css"
 
-type cardStatus = "SOLD OUT" | "ONLINE";
+enum cardStatus { 
+    soldOut = "SOLD OUT", 
+    online = "ONLINE" 
+}
 
 interface cardGrid {
     cardImg: string
-    cardStatus: cardStatus
+    cardStatus?: cardStatus
     grade: number
     country: string
     text: string
@@ -14,20 +17,37 @@ interface cardGrid {
 
 export default function CardGrid() {
 
-    let katie: cardGrid = {
-        cardImg: "./../../public/katie-zaferes.png",
-        cardStatus: "SOLD OUT",
-        grade: 5.0,
-        country: "USA",
-        text: "Life lessons with Katie Zaferes",
-        count: 6,
-        value: 136
-    }
-
-    let arr = [katie];
+    let arr = [
+        {
+            cardImg: "/katie-zaferes.png",
+            cardStatus: cardStatus.soldOut,
+            grade: 5.0,
+            country: "USA",
+            text: "Life lessons with Katie Zaferes",
+            count: 6,
+            value: 136
+        },
+        {
+            cardImg: "/wedding-photography.png",
+            cardStatus: cardStatus.online,
+            grade: 5.0,
+            country: "USA",
+            text: "Learn wedding photography",
+            count: 30,
+            value: 125
+        },
+        {
+            cardImg: "/mountain-bike.png",
+            grade: 4.8,
+            country: "USA",
+            text: "Group Mountain Biking",
+            count: 2,
+            value: 50
+        }
+    ];
 
     return (
-        <div>
+        <div className="cardGrid">
             {
                 arr.map(
                     (item, index) => {
@@ -62,7 +82,7 @@ export function CardImage(params : cardGrid){
     return (
         <div className="cardImage">
             <img className="cardImage--img" src={params.cardImg} alt="card image" />
-            <div className="cardImage--status"><p>{params.cardStatus}</p></div>
+            {params.cardStatus && <div className="cardImage--status"><p>{ params.cardStatus}</p></div>}
         </div>
     )
 }
@@ -71,11 +91,11 @@ export function CardInfo(params: cardGrid){
 
     return(
         <div className="cardInfo">
-            <span className="cardInfo--grade">
+            <div className="cardInfo--grade">
                 <img className="cardInfo--grade--star" src="./../../public/star.png" alt="star" />
-                <p className="cardInfo--grade--grade">{params.grade.toFixed(1)}</p>
-                <p className="cardInfo--grade--count-country">({params.count}) · {params.country}</p>
-            </span>
+                <p className="cardInfo--grade--grade">{params.grade.toFixed(1)}
+                <span className="gray"> ({params.count}) · {params.country}</span></p>
+            </div>
             <p className="cardInfo--text">{params.text}</p>
             <p className="cardInfo--value"><strong>From ${params.value}</strong> / person</p>
         </div>
